@@ -1,5 +1,5 @@
 {
 	"type": "esp32-fota-http",
-	"version": 1,
+	"version": "2",
 	"url": "https://www.sensores.northspot.pt/Sala/Sensor_2/Sensor_SALA_2.ino.bin"
 }
