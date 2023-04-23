@@ -1,0 +1,5625 @@
+[
+    {
+        "id": "d7405c5b52baf018",
+        "type": "tab",
+        "label": "Inicio",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ad2d793d37b001d7",
+        "type": "tab",
+        "label": "Cozinha",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "624e12446ae56fec",
+        "type": "tab",
+        "label": "Sala",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "91731f4ba480b30a",
+        "type": "tab",
+        "label": "Esplanada",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4f0d36b27ba46340",
+        "type": "tab",
+        "label": "Armazem",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "775213c7befc82bb",
+        "type": "tab",
+        "label": "PDF",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "36c8992b04a40e1e",
+        "type": "tab",
+        "label": "Todos os Sensores",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a48db0b1.9dac6",
+        "type": "subflow",
+        "name": "Zigbee Low Battery Setting",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 260,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "8e65b3ed.9f24"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 540,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "8e65b3ed.9f24",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "NotificationDevice",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "BatteryWarning",
+                "type": "num",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-battery-0",
+                    "label": {
+                        "en-US": "Min Value"
+                    },
+                    "type": "spinner",
+                    "opts": {
+                        "min": 1,
+                        "max": 25
+                    }
+                }
+            }
+        ],
+        "color": "#DDAA99"
+    },
+    {
+        "id": "97561555.3ea248",
+        "type": "subflow",
+        "name": "Subflow 1",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 300,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "9b62f1c2.e1c83"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 580,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "9b62f1c2.e1c83",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "BatteryType",
+                "type": "str",
+                "value": "CR2032",
+                "ui": {
+                    "icon": "font-awesome/fa-battery-4",
+                    "label": {
+                        "en-US": "CR2450"
+                    },
+                    "type": "select",
+                    "opts": {
+                        "opts": [
+                            {
+                                "l": {
+                                    "en-US": "CR2450"
+                                },
+                                "v": "CR2450"
+                            },
+                            {
+                                "l": {
+                                    "en-US": "CR2032"
+                                },
+                                "v": "CR2032"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "Name",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str",
+                            "num"
+                        ]
+                    },
+                    "label": {}
+                }
+            }
+        ],
+        "color": "#DDAA99"
+    },
+    {
+        "id": "9b6527f7.cad8b8",
+        "type": "MySQLdatabase",
+        "name": "Sensores MySQL",
+        "host": "localhost",
+        "port": "3306",
+        "db": "sensores",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "a22cb5334c925d0b",
+        "type": "mqtt-broker",
+        "name": "MQTT Mosquitto",
+        "broker": "192.168.1.97",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "true",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "71017cd790ef88be",
+        "type": "ui_tab",
+        "name": "Cozinha",
+        "icon": "kitchen",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "2f3f0cbcd32c5f7e",
+        "type": "ui_tab",
+        "name": "Sala",
+        "icon": "free_breakfast",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "dc52882060b46d70",
+        "type": "ui_tab",
+        "name": "Armazem",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f43d992ed8084385",
+        "type": "ui_group",
+        "name": "Sensor 1",
+        "tab": "dc52882060b46d70",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8af8109be17f63fd",
+        "type": "ui_group",
+        "name": "Sensor 1",
+        "tab": "2f3f0cbcd32c5f7e",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8197199fe2265f15",
+        "type": "ui_tab",
+        "name": "Esplanada",
+        "icon": "room_service",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "155ed888acecbf5d",
+        "type": "ui_group",
+        "name": "Sensor 1",
+        "tab": "8197199fe2265f15",
+        "order": 1,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a96b4083f028a971",
+        "type": "ui_group",
+        "name": "Sensor 1",
+        "tab": "71017cd790ef88be",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": "",
+        "info": "<style>\r\n    #Small_Screen_Group_2 {\r\n        font-size: 30px !important;\r\n        background-color: \"#FF0000\" !important;\r\n    }\r\n</style>"
+    },
+    {
+        "id": "64574ae0ae410483",
+        "type": "ui_group",
+        "name": "Sensor 2",
+        "tab": "8197199fe2265f15",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0ad7ea62b52c2f50",
+        "type": "ui_group",
+        "name": "Sensor 3",
+        "tab": "8197199fe2265f15",
+        "order": 3,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "115e4776225f9599",
+        "type": "ui_group",
+        "name": "Sensor 2",
+        "tab": "2f3f0cbcd32c5f7e",
+        "order": 3,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0c30edc512b4f860",
+        "type": "ui_group",
+        "name": "Sensor 3",
+        "tab": "2f3f0cbcd32c5f7e",
+        "order": 4,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "219b5fb70833fc55",
+        "type": "ui_group",
+        "name": "Sensor 2",
+        "tab": "71017cd790ef88be",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "db42c97b640f2a96",
+        "type": "ui_group",
+        "name": "Sensor 3",
+        "tab": "71017cd790ef88be",
+        "order": 3,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "904b7af53bb14c68",
+        "type": "ui_group",
+        "name": "Sensor 2",
+        "tab": "dc52882060b46d70",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3210ac3b6423b62c",
+        "type": "ui_group",
+        "name": "Sensor 3",
+        "tab": "dc52882060b46d70",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1ed55c3a77d04c43",
+        "type": "ui_tab",
+        "name": "Listagem",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "2da9c0ea5c1db297",
+        "type": "ui_group",
+        "name": "Todos",
+        "tab": "1ed55c3a77d04c43",
+        "order": 1,
+        "disp": true,
+        "width": 30,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3ec56b872df1fe43",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "Arial Narrow,Nimbus Sans L,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "Trebuchet MS,Helvetica,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Sensores Arimar",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "false",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 4,
+                "gy": 4,
+                "cx": 5,
+                "cy": 5,
+                "px": 2,
+                "py": 2
+            }
+        }
+    },
+    {
+        "id": "74ed309ae0e8faf0",
+        "type": "ui_group",
+        "name": "Sensor 4",
+        "tab": "71017cd790ef88be",
+        "order": 4,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "35e994e4b88bb352",
+        "type": "ui_spacer",
+        "z": "ad2d793d37b001d7",
+        "name": "spacer",
+        "group": "a96b4083f028a971",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2f99395a83438d84",
+        "type": "ui_spacer",
+        "z": "ad2d793d37b001d7",
+        "name": "spacer",
+        "group": "a96b4083f028a971",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f8d00c11ef0d6332",
+        "type": "ui_spacer",
+        "z": "ad2d793d37b001d7",
+        "name": "spacer",
+        "group": "a96b4083f028a971",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6d7625870f90dfb2",
+        "type": "ui_spacer",
+        "z": "ad2d793d37b001d7",
+        "name": "spacer",
+        "group": "219b5fb70833fc55",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "0e364a4c687a133c",
+        "type": "ui_spacer",
+        "z": "ad2d793d37b001d7",
+        "name": "spacer",
+        "group": "219b5fb70833fc55",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f466c8a5093d6710",
+        "type": "ui_spacer",
+        "z": "ad2d793d37b001d7",
+        "name": "spacer",
+        "group": "219b5fb70833fc55",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d78d3b58fab988a2",
+        "type": "ui_spacer",
+        "z": "ad2d793d37b001d7",
+        "name": "spacer",
+        "group": "219b5fb70833fc55",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "06ef272b75e390d9",
+        "type": "ui_spacer",
+        "z": "ad2d793d37b001d7",
+        "name": "spacer",
+        "group": "db42c97b640f2a96",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3505acd3a8756ef1",
+        "type": "ui_spacer",
+        "z": "ad2d793d37b001d7",
+        "name": "spacer",
+        "group": "74ed309ae0e8faf0",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ca2272c3.e8396",
+        "type": "ui_group",
+        "name": "Principal",
+        "tab": "d9bf7560.df5e58",
+        "order": 1,
+        "disp": false,
+        "width": 4,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d9bf7560.df5e58",
+        "type": "ui_tab",
+        "name": "Inicio",
+        "icon": "dashboard",
+        "order": 9,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "027aafb04853fa75",
+        "type": "ui_group",
+        "name": "Sensor 4",
+        "tab": "8197199fe2265f15",
+        "order": 4,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "72c10720b3a93ebf",
+        "type": "ui_group",
+        "name": "Sensor 5",
+        "tab": "8197199fe2265f15",
+        "order": 5,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2c436d862c51497d",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "155ed888acecbf5d",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "8a4eca2f5da7f587",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "155ed888acecbf5d",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d4d8282dac43fa57",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "155ed888acecbf5d",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d441aa05626419ea",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "155ed888acecbf5d",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "142d2d04ea4f91d7",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "64574ae0ae410483",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "207d581b93f16996",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "64574ae0ae410483",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "15c6b7e16234127f",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "64574ae0ae410483",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "fa0f6b98baaad9a4",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "0ad7ea62b52c2f50",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "fb103ae0159d6161",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "0ad7ea62b52c2f50",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a39794ecba65fb4e",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "0ad7ea62b52c2f50",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "0376d83e5f0d308a",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "0ad7ea62b52c2f50",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2e1d93bba538c588",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "027aafb04853fa75",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d30f475f760b2a83",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "027aafb04853fa75",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "eb744e596f757b3c",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "027aafb04853fa75",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6b5e9391ca35cc12",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "027aafb04853fa75",
+        "order": 11,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "0fe66bccfde9f122",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "72c10720b3a93ebf",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4843e65a568334a6",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "72c10720b3a93ebf",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "09a4bd70c9f4b6a4",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "72c10720b3a93ebf",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "046fb8660a14b247",
+        "type": "ui_spacer",
+        "z": "91731f4ba480b30a",
+        "name": "spacer",
+        "group": "72c10720b3a93ebf",
+        "order": 11,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "8e65b3ed.9f24",
+        "type": "function",
+        "z": "a48db0b1.9dac6",
+        "name": "Set Values",
+        "func": "var minBattLevel = env.get(\"BatteryWarning\");\nflow.set(\"$parent.BatteryWarning\", parseInt(minBattLevel, 10));\n\nvar device = env.get(\"NotificationDevice\");\nflow.set(\"$parent.NotificationDevice\", device);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9b62f1c2.e1c83",
+        "type": "function",
+        "z": "97561555.3ea248",
+        "name": "Update Battery",
+        "func": "var battType = env.get(\"BatteryType\");\nvar name = env.get(\"Name\");\nvar data = flow.get(\"$parent.zigbeeBattery\");\n\n\nvar battTRL = [\n  {\n    \"battery\": \"CR2032\",\n    \"url\": \"https://amzn.to/2RflnOx\"\n  },\n  {\n    \"battery\": \"CR2450\",\n    \"url\": \"https://amzn.to/2Tlaf5n\"\n  }\n];\n\nvar pos = data.map(function(e) { return e.info.name; }).indexOf(name);\nvar bat = battTRL.map(function(e) { return e.battery; }).indexOf(battType);\nif(pos !== -1){\n    if(bat => 0){data[pos].info.batteryURL = battTRL[bat].url;}\n    \n    data[pos].info.batteryType = battType;\n    flow.set(\"$parent.zigbeeBattery\", data);\n    msg.payload = battType +\" saved as default battery for \"+ name;\n}\nelse {\n    msg.payload = \"Check device name\";\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 440,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7db57965.76d468",
+        "type": "ui_button",
+        "z": "d7405c5b52baf018",
+        "name": "",
+        "group": "ca2272c3.e8396",
+        "order": 1,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "Sala",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Sala",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "ece06122.7e762"
+            ]
+        ]
+    },
+    {
+        "id": "5e1f0081.6dc3c",
+        "type": "ui_template",
+        "z": "d7405c5b52baf018",
+        "group": "ca2272c3.e8396",
+        "name": "window redirect",
+        "order": 4,
+        "width": 4,
+        "height": 1,
+        "format": "<script>\n(function(scope) {\n    scope.$watch('msg.payload', function(data) {\n        if (data == \"Sala\") {\n          //window.open(\"https://www.nodered.org\");\n          window.location.href = \"https://www.nodered.org\";\n        } \n        if (data == \"Cozinha\") {\n          //window.open(\"https://github.com/node-red\");\n          window.location.href = \"https://github.com/node-red\";\n        } \n    });\n})(scope);\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 600,
+        "y": 180,
+        "wires": [
+            [
+                "8582289.2d757d8"
+            ]
+        ]
+    },
+    {
+        "id": "23caf401.9d6d4c",
+        "type": "ui_button",
+        "z": "d7405c5b52baf018",
+        "name": "",
+        "group": "ca2272c3.e8396",
+        "order": 3,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "Cozinha",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Cozinha",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 220,
+        "y": 100,
+        "wires": [
+            [
+                "ece06122.7e762"
+            ]
+        ]
+    },
+    {
+        "id": "ece06122.7e762",
+        "type": "trigger",
+        "z": "d7405c5b52baf018",
+        "name": "reset msg",
+        "op1": "",
+        "op2": "empty",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "250",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 420,
+        "y": 180,
+        "wires": [
+            [
+                "5e1f0081.6dc3c"
+            ]
+        ]
+    },
+    {
+        "id": "8582289.2d757d8",
+        "type": "debug",
+        "z": "d7405c5b52baf018",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "8fa49ee830186a4e",
+        "type": "ui_button",
+        "z": "d7405c5b52baf018",
+        "name": "",
+        "group": "ca2272c3.e8396",
+        "order": 2,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "Armazém",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Armazém",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 219.99999237060547,
+        "y": 210.00004386901855,
+        "wires": [
+            [
+                "ece06122.7e762"
+            ]
+        ]
+    },
+    {
+        "id": "32893d6e1f021a85",
+        "type": "ui_button",
+        "z": "d7405c5b52baf018",
+        "name": "",
+        "group": "ca2272c3.e8396",
+        "order": 2,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "label": "Esplanada",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Esplanada",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 226.55091285705566,
+        "y": 272.0987501144409,
+        "wires": [
+            [
+                "ece06122.7e762"
+            ]
+        ]
+    },
+    {
+        "id": "3825aea59ee9c060",
+        "type": "mqtt in",
+        "z": "ad2d793d37b001d7",
+        "name": "Sensor 1",
+        "topic": "TFC/Cozinha/Sensor1",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 151.11113739013672,
+        "y": 203.33335876464844,
+        "wires": [
+            [
+                "55973a74525b3dd2"
+            ]
+        ]
+    },
+    {
+        "id": "9d400c724c504d9f",
+        "type": "ui_gauge",
+        "z": "ad2d793d37b001d7",
+        "name": "Coz_Sensor1",
+        "group": "a96b4083f028a971",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "-25",
+        "max": "0",
+        "colors": [
+            "#0dc50d",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "-15",
+        "seg2": "-5",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "4558ff17387db86c",
+        "type": "mqtt in",
+        "z": "ad2d793d37b001d7",
+        "name": "Sensor 3",
+        "topic": "TFC/Cozinha/Sensor3",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 151.11113739013672,
+        "y": 323.33335876464844,
+        "wires": [
+            [
+                "55973a74525b3dd2"
+            ]
+        ]
+    },
+    {
+        "id": "6f7fe614a5545a1b",
+        "type": "mqtt in",
+        "z": "ad2d793d37b001d7",
+        "name": "Sensor 2",
+        "topic": "TFC/Cozinha/Sensor2",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 151.11113739013672,
+        "y": 263.33335876464844,
+        "wires": [
+            [
+                "55973a74525b3dd2"
+            ]
+        ]
+    },
+    {
+        "id": "100cb7652bb7ae24",
+        "type": "function",
+        "z": "ad2d793d37b001d7",
+        "name": "Max e Min",
+        "func": "msg.topic = \"SELECT maximo,minimo FROM equipamento where idtipo = '\" + msg.Tipo + \"'\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 541.1111373901367,
+        "y": 303.33335876464844,
+        "wires": [
+            [
+                "f534bec0db841f5c"
+            ]
+        ]
+    },
+    {
+        "id": "78de7ac3d688f9aa",
+        "type": "mysql",
+        "z": "ad2d793d37b001d7",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 991.1111373901367,
+        "y": 523.3333587646484,
+        "wires": [
+            [
+                "0296f7a823eb316a"
+            ]
+        ]
+    },
+    {
+        "id": "942b2145dcfcd2bf",
+        "type": "function",
+        "z": "ad2d793d37b001d7",
+        "name": "Gráficos",
+        "func": "// Bateria\nvar recebido = msg.Bateria;\n//var porcento = 100 * (recebido - 1.1) / (4.2 - 1.1);\nvar porcento = ((recebido - 3.2) * 100) / 1;\nif (porcento > 100)\n    msg.Bateria = 100;\nelse\n    msg.Bateria = porcento;\n\nmsg.Bateria = msg.Bateria.toFixed(2);\nmsg.Temperatura = msg.Temperatura.toFixed(2);\nmsg.Volts = msg.Volts.toFixed(2);\n\nif (msg.Sensor == 1) {\n    msg.ui_control = {\n        \"id\": \"Coz_Sensor1\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor1\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    \n    return [msg, null, null, null];;\n}\nif (msg.Sensor == 2) {\n    msg.ui_control = {\n        \"id\": \"Coz_Sensor2\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor2\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, msg, null, null];\n}\nif (msg.Sensor == 3) {\n    msg.ui_control = {\n        \"id\": \"Coz_Sensor3\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor3\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, null, msg, null];\n}\n\nif (msg.Sensor == 4) {\n    msg.ui_control = {\n        \"id\": \"Coz_Sensor4\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor4\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, null, null, msg];\n}",
+        "outputs": 4,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1171.1111373901367,
+        "y": 303.33335876464844,
+        "wires": [
+            [
+                "9d400c724c504d9f",
+                "e0cba369a77ddb80",
+                "06d4067a499d0672",
+                "aa28b2a7e6c6f1bf"
+            ],
+            [
+                "eeecbb92298b5716",
+                "02cb27f6ca148fd6",
+                "eefeeffd575c6af5",
+                "d4c6a771b8412f99"
+            ],
+            [
+                "e630a58547b6882e",
+                "72bf1825fecb33cb",
+                "af13fd14e4494d7a",
+                "4779c3cb6818f78f"
+            ],
+            [
+                "8facfb0687db790e",
+                "76413f700b31269a",
+                "c89829d12c968488",
+                "46046947a3dc4aeb"
+            ]
+        ]
+    },
+    {
+        "id": "4d6154783f1f735e",
+        "type": "function",
+        "z": "ad2d793d37b001d7",
+        "name": "Inserir Registo",
+        "func": "msg.payload = msg.Var_Payload;\nmsg.topic = msg.Var_Topic;\nvar zona = 0;\nvar words = msg.topic.split(\"/\");\nvar date = new Date().toISOString();\ndate = date.replace(\"T\",\" \");\ndate = date.slice(0, date.length - 5 );\nif (words[1] == \"Esplanada\"){    zona = 4;} \nelse if (words[1] == \"Cozinha\"){    zona = 1;} \nelse if (words[1] = \"Sala\"){    zona = 2;}\nelse{ zona=3;}\n\nmsg.topic = \"INSERT INTO registos (zona, sensor, temperatura, bateria, data) \"+\n    \" VALUES ('\" + zona + \"','\" + msg.payload.Sensor_ID + \"', '\" \n    + msg.payload.Temperatura + \"', '\"\n    + msg.payload.Bateria + \"', '\"\n    + date + \"')\";\nmsg.Zonas = words[1];\nmsg.Sensor = words[2].slice(-1);\nmsg.Data = date;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 811.1111373901367,
+        "y": 523.3333587646484,
+        "wires": [
+            [
+                "78de7ac3d688f9aa"
+            ]
+        ]
+    },
+    {
+        "id": "eeecbb92298b5716",
+        "type": "ui_gauge",
+        "z": "ad2d793d37b001d7",
+        "name": "Coz_Sensor2",
+        "group": "219b5fb70833fc55",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "e630a58547b6882e",
+        "type": "ui_gauge",
+        "z": "ad2d793d37b001d7",
+        "name": "Coz_Sensor3",
+        "group": "db42c97b640f2a96",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "e0cba369a77ddb80",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "a96b4083f028a971",
+        "order": 1,
+        "width": 8,
+        "height": 1,
+        "name": "Nome",
+        "label": "",
+        "format": "{{msg.Sensor_Nome}}",
+        "layout": "row-left",
+        "className": "cssFont_1",
+        "x": 1450,
+        "y": 140,
+        "wires": [],
+        "info": ".cssFont_1 {\r\nfont-family: 'Roboto', sans-serif;\r\nfont-size: 30px;\r\nletter-spacing: 2px;\r\nword-spacing: 5px;\r\ncolor: #000000;\r\nfont-weight: bold;\r\ntext-decoration: none;\r\nfont-style: italic;\r\nfont-variant: normal;\r\ntext-transform: none;\r\n}"
+    },
+    {
+        "id": "72bf1825fecb33cb",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "db42c97b640f2a96",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Nome",
+        "label": "",
+        "format": "{{msg.Sensor_ID}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1450,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "06d4067a499d0672",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "a96b4083f028a971",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1489.000015258789,
+        "y": 179.00000190734863,
+        "wires": []
+    },
+    {
+        "id": "02cb27f6ca148fd6",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "219b5fb70833fc55",
+        "order": 1,
+        "width": 8,
+        "height": 1,
+        "name": "Nome",
+        "label": "",
+        "format": "{{msg.Sensor_ID}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1450,
+        "y": 280,
+        "wires": [],
+        "info": ".cssFont_1 {\r\nfont-family: 'Roboto', sans-serif;\r\nfont-size: 30px;\r\nletter-spacing: 2px;\r\nword-spacing: 5px;\r\ncolor: #000000;\r\nfont-weight: bold;\r\ntext-decoration: none;\r\nfont-style: italic;\r\nfont-variant: normal;\r\ntext-transform: none;\r\n}"
+    },
+    {
+        "id": "af13fd14e4494d7a",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "db42c97b640f2a96",
+        "order": 6,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1490,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "eefeeffd575c6af5",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "219b5fb70833fc55",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1490,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "c68eb68ff002b013",
+        "type": "mqtt out",
+        "z": "ad2d793d37b001d7",
+        "name": "Sensor 2",
+        "topic": "TFC/Cozinha/Sensor2/S2",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 331.1111373901367,
+        "y": 763.3333587646484,
+        "wires": []
+    },
+    {
+        "id": "ba850281024ec310",
+        "type": "ui_switch",
+        "z": "ad2d793d37b001d7",
+        "name": "Ativo",
+        "label": "Ligado?",
+        "tooltip": "",
+        "group": "219b5fb70833fc55",
+        "order": 10,
+        "width": 7,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "Blue",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "Green",
+        "animate": true,
+        "className": "",
+        "x": 141.11113739013672,
+        "y": 763.3333587646484,
+        "wires": [
+            [
+                "c68eb68ff002b013"
+            ]
+        ]
+    },
+    {
+        "id": "f534bec0db841f5c",
+        "type": "mysql",
+        "z": "ad2d793d37b001d7",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 771.1111373901367,
+        "y": 303.33335876464844,
+        "wires": [
+            [
+                "942b2145dcfcd2bf"
+            ]
+        ]
+    },
+    {
+        "id": "b71e7d8d63ffe603",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "219b5fb70833fc55",
+        "order": 8,
+        "width": 4,
+        "height": 1,
+        "name": "Data",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1241.1111373901367,
+        "y": 623.3333587646484,
+        "wires": []
+    },
+    {
+        "id": "0296f7a823eb316a",
+        "type": "function",
+        "z": "ad2d793d37b001d7",
+        "name": "Ultima Leitura",
+        "func": "if (msg.Sensor == 1) {    return [msg, null, null, null];}\nif (msg.Sensor == 2) {    return [null, msg, null, null];}\nif (msg.Sensor == 3) {    return [null, null, msg, null];}\nif (msg.Sensor == 4) {    return [null, null, null, msg];}",
+        "outputs": 4,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1011.1111373901367,
+        "y": 643.3333587646484,
+        "wires": [
+            [
+                "8b97debfa42fabaa"
+            ],
+            [
+                "b71e7d8d63ffe603"
+            ],
+            [
+                "85f1c9b87724f647"
+            ],
+            [
+                "caad6fa952e2c86f"
+            ]
+        ]
+    },
+    {
+        "id": "8b97debfa42fabaa",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "a96b4083f028a971",
+        "order": 8,
+        "width": 4,
+        "height": 1,
+        "name": "Data",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1241.1111373901367,
+        "y": 583.3333587646484,
+        "wires": []
+    },
+    {
+        "id": "85f1c9b87724f647",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "db42c97b640f2a96",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "Data",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1241.1111373901367,
+        "y": 663.3333587646484,
+        "wires": []
+    },
+    {
+        "id": "9bd238b83b9ab0f8",
+        "type": "function",
+        "z": "ad2d793d37b001d7",
+        "name": "SQL 24Horas",
+        "func": "msg.topic = \"SELECT temperatura, data FROM registos where sensor = '\" + msg.Sensor_ID + \"' ORDER BY data DESC limit 24\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 551.1111373901367,
+        "y": 103.33335876464844,
+        "wires": [
+            [
+                "445fb76c50e970bd"
+            ]
+        ]
+    },
+    {
+        "id": "445fb76c50e970bd",
+        "type": "mysql",
+        "z": "ad2d793d37b001d7",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 751.1111450195312,
+        "y": 103.3333683013916,
+        "wires": [
+            [
+                "71fa63cbd69a64f8"
+            ]
+        ]
+    },
+    {
+        "id": "ed6ba1c765567792",
+        "type": "ui_chart",
+        "z": "ad2d793d37b001d7",
+        "name": "Leitura Sensor 2",
+        "group": "219b5fb70833fc55",
+        "order": 4,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#24c224",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1171.1111373901367,
+        "y": 83.33335876464844,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "55973a74525b3dd2",
+        "type": "function",
+        "z": "ad2d793d37b001d7",
+        "name": "Variaveis",
+        "func": "var words = msg.topic.split(\"/\");\nmsg.Zona = words[1];\nmsg.Sensor = words[2].slice(-1);\nmsg.Tipo = msg.payload.Tipo;\nmsg.Sensor_ID = msg.payload.Sensor_ID;\nmsg.Temperatura = msg.payload.Temperatura;\nmsg.Bateria = msg.payload.Bateria;\nmsg.Versao = msg.payload.VERSAO;\nmsg.Volts = msg.payload.Bateria;\nmsg.ESP_IP = msg.payload.ESP_IP;\nmsg.Var_Payload = msg.payload;\nmsg.Var_Topic = msg.topic;\nmsg.Sensor_Nome = msg.payload.Nome\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 351.1111373901367,
+        "y": 303.33335876464844,
+        "wires": [
+            [
+                "100cb7652bb7ae24",
+                "9bd238b83b9ab0f8",
+                "e06d4017fae9b65e"
+            ]
+        ]
+    },
+    {
+        "id": "71fa63cbd69a64f8",
+        "type": "function",
+        "z": "ad2d793d37b001d7",
+        "name": "function 3",
+        "func": "var data = [];\nvar series = [\"Temperatura\"];\nvar labels = [\"\"];\nvar i, len, string;\n\nif (msg.Sensor == 1) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [msg, null, null, null];\n}\nif (msg.Sensor == 2) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [null, msg, null, null];\n}\nif (msg.Sensor == 3) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [null, null, msg, null];\n}\nif (msg.Sensor == 4) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [null, null, null, msg];\n}\n",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 942.1111488342285,
+        "y": 103.3333625793457,
+        "wires": [
+            [
+                "cb36d57a3b2b4fd7"
+            ],
+            [
+                "ed6ba1c765567792"
+            ],
+            [
+                "e27766379f6f9ce5"
+            ],
+            [
+                "726cd469a8888ad0"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "cb36d57a3b2b4fd7",
+        "type": "ui_chart",
+        "z": "ad2d793d37b001d7",
+        "name": "Leitura Sensor 1",
+        "group": "a96b4083f028a971",
+        "order": 4,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "30",
+        "removeOlderPoints": "30",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#40eb1e",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1171.1111373901367,
+        "y": 43.33335876464844,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e27766379f6f9ce5",
+        "type": "ui_chart",
+        "z": "ad2d793d37b001d7",
+        "name": "Leitura Sensor 3",
+        "group": "db42c97b640f2a96",
+        "order": 4,
+        "width": "7",
+        "height": "3",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1171.1111373901367,
+        "y": 123.33335876464844,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "82311e76b4f4ccc2",
+        "type": "switch",
+        "z": "ad2d793d37b001d7",
+        "name": "Existe Sensor?",
+        "property": "payload[0].Count(*)",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 791.1111373901367,
+        "y": 423.33335876464844,
+        "wires": [
+            [
+                "4d6154783f1f735e"
+            ],
+            [
+                "ebd61872b1112eda",
+                "4d6154783f1f735e"
+            ]
+        ]
+    },
+    {
+        "id": "e06d4017fae9b65e",
+        "type": "function",
+        "z": "ad2d793d37b001d7",
+        "name": "Select Sensor",
+        "func": "msg.topic = \"SELECT Count(*) FROM sensor where sensor_ID = '\" + msg.Sensor_ID + \"'\";\nvar teste;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 431.1111373901367,
+        "y": 423.33335876464844,
+        "wires": [
+            [
+                "8cf137ae1d372b26"
+            ]
+        ]
+    },
+    {
+        "id": "8cf137ae1d372b26",
+        "type": "mysql",
+        "z": "ad2d793d37b001d7",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 611.1111373901367,
+        "y": 423.33335876464844,
+        "wires": [
+            [
+                "82311e76b4f4ccc2"
+            ]
+        ]
+    },
+    {
+        "id": "ebd61872b1112eda",
+        "type": "function",
+        "z": "ad2d793d37b001d7",
+        "name": "Inserir Sensor",
+        "func": "msg.payload = msg.Var_Payload;\nmsg.topic = msg.Var_Topic;\nvar zona = 0;\nvar words = msg.topic.split(\"/\");\nif (words[1] == \"Esplanada\") { zona = 4; }\nelse if (words[1] == \"Cozinha\") { zona = 1; }\nelse if (words[1] = \"Sala\") { zona = 2; }\nelse { zona = 3; }\nmsg.topic = \"INSERT into sensor(Sensor_ID, Zona,Ativo,IP_Sensor) VALUES ('\" +msg.payload.Sensor_ID+ \"',\"+ zona +\",'S','\"+ msg.payload.ESP_IP +\"')\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1011.1111373901367,
+        "y": 423.33335876464844,
+        "wires": [
+            [
+                "2a473da8528573c7"
+            ]
+        ]
+    },
+    {
+        "id": "2a473da8528573c7",
+        "type": "mysql",
+        "z": "ad2d793d37b001d7",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 1181.1110305786133,
+        "y": 423.3333520889282,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1cb1da31e1901ba4",
+        "type": "mqtt out",
+        "z": "ad2d793d37b001d7",
+        "name": "Sensor 1",
+        "topic": "TFC/Cozinha/Sensor1/S1",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 331.1111373901367,
+        "y": 703.3333587646484,
+        "wires": []
+    },
+    {
+        "id": "03dfb955b710f10d",
+        "type": "ui_switch",
+        "z": "ad2d793d37b001d7",
+        "name": "Ativo",
+        "label": "Ligado?",
+        "tooltip": "",
+        "group": "a96b4083f028a971",
+        "order": 10,
+        "width": 8,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "false",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "true",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 141.11113739013672,
+        "y": 703.3333587646484,
+        "wires": [
+            [
+                "1cb1da31e1901ba4"
+            ]
+        ]
+    },
+    {
+        "id": "ea5ab67eb9176b3b",
+        "type": "mqtt out",
+        "z": "ad2d793d37b001d7",
+        "name": "Sensor 3",
+        "topic": "TFC/Cozinha/Sensor3/S3",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 331.1111373901367,
+        "y": 823.3333587646484,
+        "wires": []
+    },
+    {
+        "id": "90d9b91a76962030",
+        "type": "ui_switch",
+        "z": "ad2d793d37b001d7",
+        "name": "Ativo",
+        "label": "Ligado?",
+        "tooltip": "",
+        "group": "db42c97b640f2a96",
+        "order": 7,
+        "width": 7,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "Blue",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "Green",
+        "animate": true,
+        "className": "",
+        "x": 141.11113739013672,
+        "y": 823.3333587646484,
+        "wires": [
+            [
+                "ea5ab67eb9176b3b"
+            ]
+        ]
+    },
+    {
+        "id": "13e3c79fbac30f3c",
+        "type": "e-mail",
+        "z": "ad2d793d37b001d7",
+        "server": "mail.northspot.pt",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "arimar.sensores@gmail.com",
+        "dname": "Email",
+        "x": 521.1111373901367,
+        "y": 563.3333587646484,
+        "wires": []
+    },
+    {
+        "id": "c304cc8122b42507",
+        "type": "switch",
+        "z": "ad2d793d37b001d7",
+        "name": "Valores_Temperatura",
+        "property": "Temperatura",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "20.50",
+                "vt": "str"
+            },
+            {
+                "t": "lte",
+                "v": "10",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 191.11113739013672,
+        "y": 503.33335876464844,
+        "wires": [
+            [
+                "82fcc047d16991a6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3c6c63a2b457a253",
+        "type": "catch",
+        "z": "ad2d793d37b001d7",
+        "name": "",
+        "scope": [
+            "13e3c79fbac30f3c"
+        ],
+        "uncaught": false,
+        "x": 141.11113739013672,
+        "y": 623.3333587646484,
+        "wires": [
+            [
+                "03826e4063af0f41"
+            ]
+        ]
+    },
+    {
+        "id": "03826e4063af0f41",
+        "type": "debug",
+        "z": "ad2d793d37b001d7",
+        "name": "debug 31",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 291.1111373901367,
+        "y": 623.3333587646484,
+        "wires": []
+    },
+    {
+        "id": "a75715311eaa81d6",
+        "type": "mqtt in",
+        "z": "ad2d793d37b001d7",
+        "name": "Sensor 4",
+        "topic": "TFC/Cozinha/Sensor4",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 151.11113739013672,
+        "y": 383.33335876464844,
+        "wires": [
+            [
+                "55973a74525b3dd2"
+            ]
+        ]
+    },
+    {
+        "id": "8facfb0687db790e",
+        "type": "ui_gauge",
+        "z": "ad2d793d37b001d7",
+        "name": "Coz_Sensor4",
+        "group": "74ed309ae0e8faf0",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "-30",
+        "max": "0",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "-20",
+        "seg2": "-5",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "76413f700b31269a",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "74ed309ae0e8faf0",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Nome",
+        "label": "",
+        "format": "{{msg.Sensor_Nome}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1450,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "c89829d12c968488",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "74ed309ae0e8faf0",
+        "order": 6,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1490,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "caad6fa952e2c86f",
+        "type": "ui_text",
+        "z": "ad2d793d37b001d7",
+        "group": "74ed309ae0e8faf0",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "Data",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1241.1111373901367,
+        "y": 703.3333587646484,
+        "wires": []
+    },
+    {
+        "id": "726cd469a8888ad0",
+        "type": "ui_chart",
+        "z": "ad2d793d37b001d7",
+        "name": "Leitura Sensor 4",
+        "group": "74ed309ae0e8faf0",
+        "order": 4,
+        "width": "7",
+        "height": "3",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1171.1111373901367,
+        "y": 163.33335876464844,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bbfed53669b0aab4",
+        "type": "mqtt out",
+        "z": "ad2d793d37b001d7",
+        "name": "Sensor 4",
+        "topic": "TFC/Cozinha/Sensor4/S4",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 332.22224044799805,
+        "y": 887.7778358459473,
+        "wires": []
+    },
+    {
+        "id": "275f0e6312cfe080",
+        "type": "ui_switch",
+        "z": "ad2d793d37b001d7",
+        "name": "Ativo",
+        "label": "Ligado?",
+        "tooltip": "",
+        "group": "74ed309ae0e8faf0",
+        "order": 7,
+        "width": 7,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "Blue",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "Green",
+        "animate": true,
+        "className": "",
+        "x": 143.33333206176758,
+        "y": 887.7778568267822,
+        "wires": [
+            [
+                "bbfed53669b0aab4"
+            ]
+        ]
+    },
+    {
+        "id": "aa28b2a7e6c6f1bf",
+        "type": "ui_gauge",
+        "z": "ad2d793d37b001d7",
+        "name": "BAT_Sensor1",
+        "group": "a96b4083f028a971",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "d4c6a771b8412f99",
+        "type": "ui_gauge",
+        "z": "ad2d793d37b001d7",
+        "name": "BAT_Sensor2",
+        "group": "219b5fb70833fc55",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "4779c3cb6818f78f",
+        "type": "ui_gauge",
+        "z": "ad2d793d37b001d7",
+        "name": "BAT_Sensor3",
+        "group": "db42c97b640f2a96",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "46046947a3dc4aeb",
+        "type": "ui_gauge",
+        "z": "ad2d793d37b001d7",
+        "name": "BAT_Sensor4",
+        "group": "74ed309ae0e8faf0",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "82fcc047d16991a6",
+        "type": "function",
+        "z": "ad2d793d37b001d7",
+        "name": "Temperatura ",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 401.1111373901367,
+        "y": 503.33335876464844,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9dd6f2ca3e1348c3",
+        "type": "switch",
+        "z": "ad2d793d37b001d7",
+        "name": "Valores_Bateria",
+        "property": "Bateria",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "30",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 171.11113739013672,
+        "y": 563.3333587646484,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b6783ce64b1c4bfa",
+        "type": "mqtt in",
+        "z": "624e12446ae56fec",
+        "name": "Sensor 1",
+        "topic": "TFC/Sala/Sensor1",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 260,
+        "wires": [
+            [
+                "791521aae6f731a5",
+                "8df79be6042711e8"
+            ]
+        ]
+    },
+    {
+        "id": "b845d36a9d5f88aa",
+        "type": "mqtt in",
+        "z": "624e12446ae56fec",
+        "name": "Sensor 3",
+        "topic": "TFC/Sala/Sensor3",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 420,
+        "wires": [
+            [
+                "791521aae6f731a5",
+                "8df79be6042711e8"
+            ]
+        ]
+    },
+    {
+        "id": "d481742c9ddb32c5",
+        "type": "mqtt in",
+        "z": "624e12446ae56fec",
+        "name": "Sensor 2",
+        "topic": "TFC/Sala/Sensor2",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 340,
+        "wires": [
+            [
+                "791521aae6f731a5",
+                "8df79be6042711e8"
+            ]
+        ]
+    },
+    {
+        "id": "558f1164a29c4d2d",
+        "type": "function",
+        "z": "624e12446ae56fec",
+        "name": "Max e Min",
+        "func": "msg.topic = \"SELECT maximo,minimo FROM equipamento where idtipo = '\" + msg.Tipo + \"'\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 380,
+        "wires": [
+            [
+                "012bc9d151c30481"
+            ]
+        ]
+    },
+    {
+        "id": "dd2ccac21cbd8f8b",
+        "type": "mysql",
+        "z": "624e12446ae56fec",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 680,
+        "y": 720,
+        "wires": [
+            [
+                "1fa68990df27e1dd"
+            ]
+        ]
+    },
+    {
+        "id": "856839286ef1fa1f",
+        "type": "function",
+        "z": "624e12446ae56fec",
+        "name": "Gráficos",
+        "func": "// Bateria\nvar recebido = msg.Bateria;\n//var porcento = 100 * (recebido - 1.1) / (4.2 - 1.1);\nvar porcento = ((recebido - 3.2) * 100) / 1;\nif (porcento > 100)\n    msg.Bateria = 100;\nelse\n    msg.Bateria = porcento;\n\nmsg.Bateria = msg.Bateria.toFixed(2);\nmsg.Temperatura = msg.Temperatura.toFixed(2);\n\nif (msg.Sensor == 1) {\n    msg.ui_control = {\n        \"id\": \"Graf_Sensor1\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor1\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    \n    return [msg, null, null];;\n}\nif (msg.Sensor == 2) {\n    msg.ui_control = {\n        \"id\": \"Graf_Sensor2\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor2\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, msg, null];\n}\nif (msg.Sensor == 3) {\n    msg.ui_control = {\n        \"id\": \"Graf_Sensor3\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor3\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, null, msg];\n}",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 380,
+        "wires": [
+            [
+                "68b6452f8fe228b5",
+                "da51f7b347769f78",
+                "5112992d1742b953",
+                "3f954a91ad4ea0ba"
+            ],
+            [
+                "1f1d4a57339578d2",
+                "cfcfc58f978d0856",
+                "d5a1b2009676b521",
+                "df2d76089324d120"
+            ],
+            [
+                "e88ced7dac4aaf0a",
+                "72aa9bad89bdde1c",
+                "b104ef86fcd10171",
+                "3cbff075bd412a43"
+            ]
+        ]
+    },
+    {
+        "id": "38a8b767601a6389",
+        "type": "function",
+        "z": "624e12446ae56fec",
+        "name": "Inserir Registo",
+        "func": "msg.payload = msg.Var_Payload;\nmsg.topic = msg.Var_Topic;\nvar zona = 0;\nvar words = msg.topic.split(\"/\");\nvar date = new Date().toISOString();\ndate = date.replace(\"T\",\" \");\ndate = date.slice(0, date.length - 5 );\nif (words[1] == \"Esplanada\"){    zona = 4;} \nelse if (words[1] == \"Cozinha\"){    zona = 1;} \nelse if (words[1] = \"Sala\"){    zona = 2;}\nelse{ zona=3;}\n\nmsg.topic = \"INSERT INTO registos (zona, sensor, temperatura, bateria, data) \"+\n    \" VALUES ('\" + zona + \"','\" + msg.payload.Sensor_ID + \"', '\" \n    + msg.payload.Temperatura + \"', '\"\n    + msg.payload.Bateria + \"', '\"\n    + date + \"')\";\nmsg.Zonas = words[1];\nmsg.Sensor = words[2].slice(-1);\nmsg.Data = date;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 720,
+        "wires": [
+            [
+                "dd2ccac21cbd8f8b"
+            ]
+        ]
+    },
+    {
+        "id": "d478e76a605ebea1",
+        "type": "mqtt out",
+        "z": "624e12446ae56fec",
+        "name": "Sensor 2",
+        "topic": "TFC/Cozinha/Sensor2/S2",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 500,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "012bc9d151c30481",
+        "type": "mysql",
+        "z": "624e12446ae56fec",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 760,
+        "y": 380,
+        "wires": [
+            [
+                "856839286ef1fa1f"
+            ]
+        ]
+    },
+    {
+        "id": "1fa68990df27e1dd",
+        "type": "function",
+        "z": "624e12446ae56fec",
+        "name": "Ultima Leitura",
+        "func": "\nif (msg.Sensor == 1) {    return [msg, null, null];}\nif (msg.Sensor == 2) {    return [null, msg, null];}\nif (msg.Sensor == 3) {    return [null, null, msg];}",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 720,
+        "wires": [
+            [
+                "25152c3decb2a1ee"
+            ],
+            [
+                "c8edad63faa4de7c"
+            ],
+            [
+                "6d85df7e60dadffa"
+            ]
+        ]
+    },
+    {
+        "id": "1c2d70eebcc2cf44",
+        "type": "function",
+        "z": "624e12446ae56fec",
+        "name": "SQL 24Horas",
+        "func": "msg.topic = \"SELECT temperatura, data FROM registos where sensor = '\" + msg.Sensor_ID + \"' ORDER BY data DESC limit 24\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "a4ecfea286ef4124"
+            ]
+        ]
+    },
+    {
+        "id": "a4ecfea286ef4124",
+        "type": "mysql",
+        "z": "624e12446ae56fec",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 760,
+        "y": 280,
+        "wires": [
+            [
+                "db4efe825754c6fe"
+            ]
+        ]
+    },
+    {
+        "id": "791521aae6f731a5",
+        "type": "function",
+        "z": "624e12446ae56fec",
+        "name": "Variaveis",
+        "func": "var words = msg.topic.split(\"/\");\nmsg.Zona = words[1];\nmsg.Sensor = words[2].slice(-1);\nmsg.Tipo = msg.payload.Tipo;\nmsg.Sensor_ID = msg.payload.Sensor_ID;\nmsg.Temperatura = msg.payload.Temperatura;\nmsg.Bateria = msg.payload.Bateria;\nmsg.Volts = msg.payload.Bateria;\nmsg.ESP_IP = msg.payload.ESP_IP;\nmsg.Var_Payload = msg.payload;\nmsg.Var_Topic = msg.topic;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 360,
+        "wires": [
+            [
+                "558f1164a29c4d2d",
+                "1c2d70eebcc2cf44",
+                "2c774fd718867a44"
+            ]
+        ]
+    },
+    {
+        "id": "db4efe825754c6fe",
+        "type": "function",
+        "z": "624e12446ae56fec",
+        "name": "function 6",
+        "func": "var data = [];\nvar series = [\"Temperatura\"];\nvar labels = [\"\"];\nvar i, len, string;\n\nif (msg.Sensor == 1) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [msg, null, null];\n}\nif (msg.Sensor == 2) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [null, msg, null];\n}\nif (msg.Sensor == 3) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [null, null, msg];\n}",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 280,
+        "wires": [
+            [
+                "290df1d3b53435c9"
+            ],
+            [
+                "99316fcce0830b6b"
+            ],
+            [
+                "d5acaa039d510a66"
+            ]
+        ]
+    },
+    {
+        "id": "8df79be6042711e8",
+        "type": "debug",
+        "z": "624e12446ae56fec",
+        "name": "debug 30",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "41df01807b86f0d6",
+        "type": "switch",
+        "z": "624e12446ae56fec",
+        "name": "Existe Sensor?",
+        "property": "payload[0].Count(*)",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 440,
+        "y": 560,
+        "wires": [
+            [
+                "38a8b767601a6389"
+            ],
+            [
+                "ffca1ee1f2ffc250",
+                "38a8b767601a6389"
+            ]
+        ]
+    },
+    {
+        "id": "2c774fd718867a44",
+        "type": "function",
+        "z": "624e12446ae56fec",
+        "name": "Select Sensor",
+        "func": "msg.topic = \"SELECT Count(*) FROM sensor where sensor_ID = '\" + msg.Sensor_ID + \"'\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 460,
+        "wires": [
+            [
+                "7b336bdfc7a7025b"
+            ]
+        ]
+    },
+    {
+        "id": "7b336bdfc7a7025b",
+        "type": "mysql",
+        "z": "624e12446ae56fec",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 760,
+        "y": 460,
+        "wires": [
+            [
+                "41df01807b86f0d6"
+            ]
+        ]
+    },
+    {
+        "id": "ffca1ee1f2ffc250",
+        "type": "function",
+        "z": "624e12446ae56fec",
+        "name": "Inserir Sensor",
+        "func": "msg.payload = msg.Var_Payload;\nmsg.topic = msg.Var_Topic;\nvar zona = 0;\nvar words = msg.topic.split(\"/\");\nif (words[1] == \"Esplanada\") { zona = 4; }\nelse if (words[1] == \"Cozinha\") { zona = 1; }\nelse if (words[1] = \"Sala\") { zona = 2; }\nelse { zona = 3; }\nmsg.topic = \"INSERT into sensor(Sensor_ID, Zona,Ativo,IP_Sensor) VALUES ('\" +msg.payload.Sensor_ID+ \"',\"+ zona +\",'S','\"+ msg.payload.ESP_IP+ \"')\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 560,
+        "wires": [
+            [
+                "520b7129205a7f3d"
+            ]
+        ]
+    },
+    {
+        "id": "520b7129205a7f3d",
+        "type": "mysql",
+        "z": "624e12446ae56fec",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 840,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "68b6452f8fe228b5",
+        "type": "ui_gauge",
+        "z": "624e12446ae56fec",
+        "name": "Graf_Sensor1",
+        "group": "8af8109be17f63fd",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1364.0000190734863,
+        "y": 157.00000095367432,
+        "wires": []
+    },
+    {
+        "id": "da51f7b347769f78",
+        "type": "ui_text",
+        "z": "624e12446ae56fec",
+        "group": "8af8109be17f63fd",
+        "order": 1,
+        "width": 8,
+        "height": 1,
+        "name": "Nome",
+        "label": "ID Sensor: ",
+        "format": "{{msg.Sensor_ID}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1334.0000190734863,
+        "y": 236.00000381469727,
+        "wires": []
+    },
+    {
+        "id": "5112992d1742b953",
+        "type": "ui_text",
+        "z": "624e12446ae56fec",
+        "group": "8af8109be17f63fd",
+        "order": 6,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1372.0000228881836,
+        "y": 275.00000381469727,
+        "wires": []
+    },
+    {
+        "id": "25152c3decb2a1ee",
+        "type": "ui_text",
+        "z": "624e12446ae56fec",
+        "group": "8af8109be17f63fd",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "Data",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1185.000015258789,
+        "y": 741.000002861023,
+        "wires": []
+    },
+    {
+        "id": "290df1d3b53435c9",
+        "type": "ui_chart",
+        "z": "624e12446ae56fec",
+        "name": "Leitura Sala Sensor 1",
+        "group": "8af8109be17f63fd",
+        "order": 4,
+        "width": "7",
+        "height": "3",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#40eb1e",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1067.0000228881836,
+        "y": 40.00000333786011,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1f1d4a57339578d2",
+        "type": "ui_gauge",
+        "z": "624e12446ae56fec",
+        "name": "Graf_Sensor2",
+        "group": "115e4776225f9599",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1361.0000190734863,
+        "y": 330.0000047683716,
+        "wires": []
+    },
+    {
+        "id": "cfcfc58f978d0856",
+        "type": "ui_text",
+        "z": "624e12446ae56fec",
+        "group": "115e4776225f9599",
+        "order": 1,
+        "width": 8,
+        "height": 1,
+        "name": "Nome",
+        "label": "ID Sensor: ",
+        "format": "{{msg.Sensor_ID}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1332.0000190734863,
+        "y": 449.0000066757202,
+        "wires": []
+    },
+    {
+        "id": "d5a1b2009676b521",
+        "type": "ui_text",
+        "z": "624e12446ae56fec",
+        "group": "115e4776225f9599",
+        "order": 6,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1371.0000190734863,
+        "y": 412.0000057220459,
+        "wires": []
+    },
+    {
+        "id": "c8edad63faa4de7c",
+        "type": "ui_text",
+        "z": "624e12446ae56fec",
+        "group": "115e4776225f9599",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "Data",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1143.0000190734863,
+        "y": 835.0000057220459,
+        "wires": []
+    },
+    {
+        "id": "99316fcce0830b6b",
+        "type": "ui_chart",
+        "z": "624e12446ae56fec",
+        "name": "Leitura Sala Sensor 2",
+        "group": "115e4776225f9599",
+        "order": 4,
+        "width": "7",
+        "height": "3",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#40eb1e",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1064.000015258789,
+        "y": 90.0000057220459,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b104ef86fcd10171",
+        "type": "ui_gauge",
+        "z": "624e12446ae56fec",
+        "name": "Graf_Sensor3",
+        "group": "0c30edc512b4f860",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1363.0000190734863,
+        "y": 515.0000076293945,
+        "wires": []
+    },
+    {
+        "id": "72aa9bad89bdde1c",
+        "type": "ui_text",
+        "z": "624e12446ae56fec",
+        "group": "0c30edc512b4f860",
+        "order": 1,
+        "width": 8,
+        "height": 1,
+        "name": "Nome",
+        "label": "ID Sensor: ",
+        "format": "{{msg.Sensor_ID}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1332.0000190734863,
+        "y": 600.0000095367432,
+        "wires": []
+    },
+    {
+        "id": "e88ced7dac4aaf0a",
+        "type": "ui_text",
+        "z": "624e12446ae56fec",
+        "group": "0c30edc512b4f860",
+        "order": 6,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1371.000015258789,
+        "y": 642.0000095367432,
+        "wires": []
+    },
+    {
+        "id": "6d85df7e60dadffa",
+        "type": "ui_text",
+        "z": "624e12446ae56fec",
+        "group": "0c30edc512b4f860",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "Data",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1154.0000190734863,
+        "y": 898.0000076293945,
+        "wires": []
+    },
+    {
+        "id": "d5acaa039d510a66",
+        "type": "ui_chart",
+        "z": "624e12446ae56fec",
+        "name": "Leitura Sala Sensor 3",
+        "group": "0c30edc512b4f860",
+        "order": 4,
+        "width": "7",
+        "height": "3",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#40eb1e",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1056.0000228881836,
+        "y": 141.00000762939453,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3cbff075bd412a43",
+        "type": "ui_gauge",
+        "z": "624e12446ae56fec",
+        "name": "BAT_Sensor3",
+        "group": "0c30edc512b4f860",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1361.0000190734863,
+        "y": 560.0000076293945,
+        "wires": []
+    },
+    {
+        "id": "3f954a91ad4ea0ba",
+        "type": "ui_gauge",
+        "z": "624e12446ae56fec",
+        "name": "BAT_Sensor1",
+        "group": "8af8109be17f63fd",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1365.000015258789,
+        "y": 195.00000095367432,
+        "wires": []
+    },
+    {
+        "id": "df2d76089324d120",
+        "type": "ui_gauge",
+        "z": "624e12446ae56fec",
+        "name": "BAT_Sensor2",
+        "group": "115e4776225f9599",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1363.0000190734863,
+        "y": 373.0000057220459,
+        "wires": []
+    },
+    {
+        "id": "84c26502824dcea2",
+        "type": "mqtt in",
+        "z": "91731f4ba480b30a",
+        "name": "Sensor 1",
+        "topic": "TFC/Esplanada/Sensor1",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "f5d6e6f3c52513a6",
+                "65f85ecf205c615b"
+            ]
+        ]
+    },
+    {
+        "id": "bea3251b9589d723",
+        "type": "ui_gauge",
+        "z": "91731f4ba480b30a",
+        "name": "Esp_Sensor1",
+        "group": "155ed888acecbf5d",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "5",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "282124d82232ed18",
+        "type": "mqtt in",
+        "z": "91731f4ba480b30a",
+        "name": "Sensor 3",
+        "topic": "TFC/Esplanada/Sensor3",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 320,
+        "wires": [
+            [
+                "f5d6e6f3c52513a6",
+                "65f85ecf205c615b"
+            ]
+        ]
+    },
+    {
+        "id": "2564263f133c8812",
+        "type": "mqtt in",
+        "z": "91731f4ba480b30a",
+        "name": "Sensor 2",
+        "topic": "TFC/Esplanada/Sensor2",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 260,
+        "wires": [
+            [
+                "f5d6e6f3c52513a6",
+                "65f85ecf205c615b"
+            ]
+        ]
+    },
+    {
+        "id": "11397dc902d15240",
+        "type": "function",
+        "z": "91731f4ba480b30a",
+        "name": "Max e Min",
+        "func": "msg.topic = \"SELECT maximo,minimo FROM equipamento where idtipo = '\" + msg.Tipo + \"'\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 320,
+        "wires": [
+            [
+                "fff366ce796d8ddf"
+            ]
+        ]
+    },
+    {
+        "id": "7c5df889f6398010",
+        "type": "mysql",
+        "z": "91731f4ba480b30a",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 1014.4444770812988,
+        "y": 538.8889074325562,
+        "wires": [
+            [
+                "17470c5957cee0c3"
+            ]
+        ]
+    },
+    {
+        "id": "fd79ea893edb5b17",
+        "type": "function",
+        "z": "91731f4ba480b30a",
+        "name": "Gráficos",
+        "func": "// Bateria\nvar recebido = msg.Bateria;\n//var porcento = 100 * (recebido - 1.1) / (4.2 - 1.1);\nvar porcento = ((recebido - 3.2) * 100) / 1;\nif (porcento > 100)\n    msg.Bateria = 100;\nelse\n    msg.Bateria = porcento;\n\nmsg.Bateria = msg.Bateria.toFixed(2);\nmsg.Temperatura = msg.Temperatura.toFixed(2);\nmsg.Volts = msg.Volts.toFixed(2);\n\nif (msg.Sensor == 1) {\n    msg.ui_control = {\n        \"id\": \"Esp_Sensor1\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor1\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    \n    return [msg, null, null, null, null];;\n}\nif (msg.Sensor == 2) {\n    msg.ui_control = {\n        \"id\": \"Esp_Sensor2\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor2\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, msg, null, null, null];\n}\nif (msg.Sensor == 3) {\n    msg.ui_control = {\n        \"id\": \"Esp_Sensor3\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor3\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, null, msg, null, null];\n}\n\nif (msg.Sensor == 4) {\n    msg.ui_control = {\n        \"id\": \"Esp_Sensor4\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor4\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, null, null, msg, null];\n}\n\nif (msg.Sensor == 4) {\n    msg.ui_control = {\n        \"id\": \"Esp_Sensor5\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    msg.ui_control = {\n        \"id\": \"BAT_Sensor5\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, null, null, null, msg];\n}",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1204.4443664550781,
+        "y": 331.1111717224121,
+        "wires": [
+            [
+                "bea3251b9589d723",
+                "4ac0270e32d6aedf",
+                "ca4d5c968dadafc7",
+                "b91d17c87df9909b"
+            ],
+            [
+                "b87c1d6a909d2d76",
+                "1fc1675f01f063fb",
+                "f09d04059bcbeee4",
+                "c4094ca23a20a3bf"
+            ],
+            [
+                "e5a702f5454628af",
+                "d3d44174de1e9368",
+                "4be2b12a36265c8b",
+                "04c1b1316304f21d"
+            ],
+            [
+                "3e783f2148bc2654",
+                "607f7c39f693ea14",
+                "2e606723a281e6a4",
+                "520f4b2c665a1d57"
+            ],
+            [
+                "7d08a2f896a94476",
+                "04333cd4ab48998c",
+                "afc02b5843165f5d",
+                "e79733552cbb3d59"
+            ]
+        ]
+    },
+    {
+        "id": "8ca93ad7ad4073bd",
+        "type": "function",
+        "z": "91731f4ba480b30a",
+        "name": "Inserir Registo",
+        "func": "msg.payload = msg.Var_Payload;\nmsg.topic = msg.Var_Topic;\nvar zona = 0;\nvar words = msg.topic.split(\"/\");\nvar date = new Date().toISOString();\ndate = date.replace(\"T\",\" \");\ndate = date.slice(0, date.length - 5 );\nif (words[1] == \"Esplanada\"){    zona = 4;} \nelse if (words[1] == \"Cozinha\"){    zona = 1;} \nelse if (words[1] = \"Sala\"){    zona = 2;}\nelse{ zona=3;}\n\nmsg.topic = \"INSERT INTO registos (zona, sensor, temperatura, bateria, data) \"+\n    \" VALUES ('\" + zona + \"','\" + msg.payload.Sensor_ID + \"', '\" \n    + msg.payload.Temperatura + \"', '\"\n    + msg.payload.Bateria + \"', '\"\n    + date + \"')\";\nmsg.Zonas = words[1];\nmsg.Sensor = words[2].slice(-1);\nmsg.Data = date;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 540,
+        "wires": [
+            [
+                "7c5df889f6398010"
+            ]
+        ]
+    },
+    {
+        "id": "b87c1d6a909d2d76",
+        "type": "ui_gauge",
+        "z": "91731f4ba480b30a",
+        "name": "Esp_Sensor2",
+        "group": "64574ae0ae410483",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e5a702f5454628af",
+        "type": "ui_gauge",
+        "z": "91731f4ba480b30a",
+        "name": "Esp_Sensor3",
+        "group": "0ad7ea62b52c2f50",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "4ac0270e32d6aedf",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "155ed888acecbf5d",
+        "order": 1,
+        "width": 8,
+        "height": 1,
+        "name": "Sensor 1",
+        "label": "Nome: ",
+        "format": "{{msg.Sensor_Nome}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1460,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d3d44174de1e9368",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "0ad7ea62b52c2f50",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Sensor 3",
+        "label": "Nome: ",
+        "format": "{{msg.Sensor_ID}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1460,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "ca4d5c968dadafc7",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "155ed888acecbf5d",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1490,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1fc1675f01f063fb",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "64574ae0ae410483",
+        "order": 1,
+        "width": 8,
+        "height": 1,
+        "name": "Sensor 2",
+        "label": "",
+        "format": "{{msg.Sensor_Nome}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1460,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "4be2b12a36265c8b",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "0ad7ea62b52c2f50",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1490,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "f09d04059bcbeee4",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "64574ae0ae410483",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1490,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "7675404a6ddae961",
+        "type": "mqtt out",
+        "z": "91731f4ba480b30a",
+        "name": "Sensor 2",
+        "topic": "TFC/Esplanada/Sensor2/S2",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 360,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "842564cebc28ab1c",
+        "type": "ui_switch",
+        "z": "91731f4ba480b30a",
+        "name": "Ativo",
+        "label": "Ligado?",
+        "tooltip": "",
+        "group": "155ed888acecbf5d",
+        "order": 10,
+        "width": 7,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "Blue",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "Green",
+        "animate": true,
+        "className": "",
+        "x": 170,
+        "y": 800,
+        "wires": [
+            [
+                "7675404a6ddae961"
+            ]
+        ]
+    },
+    {
+        "id": "fff366ce796d8ddf",
+        "type": "mysql",
+        "z": "91731f4ba480b30a",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 800,
+        "y": 320,
+        "wires": [
+            [
+                "fd79ea893edb5b17"
+            ]
+        ]
+    },
+    {
+        "id": "78a9d749d384278d",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "64574ae0ae410483",
+        "order": 8,
+        "width": 4,
+        "height": 1,
+        "name": "Data_Sensor_2",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1160,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "17470c5957cee0c3",
+        "type": "function",
+        "z": "91731f4ba480b30a",
+        "name": "Ultima Leitura",
+        "func": "if (msg.Sensor == 1) {    return [msg, null, null, null, null];}\nif (msg.Sensor == 2) {    return [null, msg, null, null, null];}\nif (msg.Sensor == 3) {    return [null, null, msg, null, null];}\nif (msg.Sensor == 4) {    return [null, null, null, msg, null];}\nif (msg.Sensor == 5) {    return [null, null, null, null, msg];}",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 922.2222595214844,
+        "y": 718.8889541625977,
+        "wires": [
+            [
+                "a14e68af6f224f31"
+            ],
+            [
+                "78a9d749d384278d"
+            ],
+            [
+                "f18194133cf08a44"
+            ],
+            [
+                "1a7bb8339f54b953"
+            ],
+            [
+                "7c4e1518ac0f6fe7"
+            ]
+        ]
+    },
+    {
+        "id": "a14e68af6f224f31",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "155ed888acecbf5d",
+        "order": 8,
+        "width": 4,
+        "height": 1,
+        "name": "Data_Sensor_1",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1160,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "f18194133cf08a44",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "0ad7ea62b52c2f50",
+        "order": 8,
+        "width": 4,
+        "height": 1,
+        "name": "Data_Sensor_3",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1160,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "f73d81ac5a061e1b",
+        "type": "function",
+        "z": "91731f4ba480b30a",
+        "name": "SQL 24Horas",
+        "func": "msg.topic = \"SELECT temperatura, data FROM registos where sensor = '\" + msg.Sensor_ID + \"' ORDER BY data DESC limit 24\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 511.1111526489258,
+        "y": 190.00000953674316,
+        "wires": [
+            [
+                "b0056accb0e68746"
+            ]
+        ]
+    },
+    {
+        "id": "b0056accb0e68746",
+        "type": "mysql",
+        "z": "91731f4ba480b30a",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 704.4445571899414,
+        "y": 135.5555715560913,
+        "wires": [
+            [
+                "43a3f0660fe5ccc4"
+            ]
+        ]
+    },
+    {
+        "id": "e8afacb2708f4b6d",
+        "type": "ui_chart",
+        "z": "91731f4ba480b30a",
+        "name": "Leitura Sensor 2",
+        "group": "64574ae0ae410483",
+        "order": 4,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#24c224",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1140,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f5d6e6f3c52513a6",
+        "type": "function",
+        "z": "91731f4ba480b30a",
+        "name": "Variaveis",
+        "func": "var words = msg.topic.split(\"/\");\nmsg.Zona = words[1];\nmsg.Sensor = words[2].slice(-1);\nmsg.Tipo = msg.payload.Tipo;\nmsg.Sensor_ID = msg.payload.Sensor_ID;\nmsg.Temperatura = msg.payload.Temperatura;\nmsg.Bateria = msg.payload.Bateria;\nmsg.versao = msg.payload.VERSAO;\nmsg.Volts = msg.payload.Bateria;\nmsg.ESP_IP = msg.payload.ESP_IP;\nmsg.Var_Payload = msg.payload;\nmsg.Var_Topic = msg.topic;\nmsg.Sensor_Nome = msg.payload.Nome\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 320,
+        "wires": [
+            [
+                "11397dc902d15240",
+                "f73d81ac5a061e1b",
+                "ddcfa3841a2424b7"
+            ]
+        ]
+    },
+    {
+        "id": "43a3f0660fe5ccc4",
+        "type": "function",
+        "z": "91731f4ba480b30a",
+        "name": "function 7",
+        "func": "var data = [];\nvar series = [\"Temperatura\"];\nvar labels = [\"\"];\nvar i, len, string;\n\nif (msg.Sensor == 1) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [msg, null, null, null, null];\n}\nif (msg.Sensor == 2) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [null, msg, null, null, null];\n}\nif (msg.Sensor == 3) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [null, null, msg, null, null];\n}\nif (msg.Sensor == 4) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [null, null, null, msg, null];\n}\nif (msg.Sensor == 5) {\n    for (i = 0, len = msg.payload.length, string = \"\"; i < len; i++) {\n        data.push({ \"x\": Date.parse(msg.payload[i].data), \"y\": Number(msg.payload[i].temperatura) });\n    }\n\n    data = [data];\n    msg.payload = [{ series, data, labels }];\n    return [null, null, null, null, msg];\n}",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 894.4445114135742,
+        "y": 117.77778244018555,
+        "wires": [
+            [
+                "cc3028a6d8b49502"
+            ],
+            [
+                "e8afacb2708f4b6d"
+            ],
+            [
+                "fa9d9537d0063a36"
+            ],
+            [
+                "243ef01484c4408e"
+            ],
+            [
+                "7292edaf1c27c215"
+            ]
+        ]
+    },
+    {
+        "id": "cc3028a6d8b49502",
+        "type": "ui_chart",
+        "z": "91731f4ba480b30a",
+        "name": "Leitura Sensor 1",
+        "group": "155ed888acecbf5d",
+        "order": 4,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "30",
+        "removeOlderPoints": "30",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#40eb1e",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1140,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fa9d9537d0063a36",
+        "type": "ui_chart",
+        "z": "91731f4ba480b30a",
+        "name": "Leitura Sensor 3",
+        "group": "0ad7ea62b52c2f50",
+        "order": 4,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1140,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "65f85ecf205c615b",
+        "type": "debug",
+        "z": "91731f4ba480b30a",
+        "name": "debug 32",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "3eb3326614b84918",
+        "type": "switch",
+        "z": "91731f4ba480b30a",
+        "name": "Existe Sensor?",
+        "property": "payload[0].Count(*)",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 760.0000457763672,
+        "y": 447.7778081893921,
+        "wires": [
+            [
+                "8ca93ad7ad4073bd"
+            ],
+            [
+                "f8c103b15299e04a",
+                "8ca93ad7ad4073bd"
+            ]
+        ]
+    },
+    {
+        "id": "ddcfa3841a2424b7",
+        "type": "function",
+        "z": "91731f4ba480b30a",
+        "name": "Select Sensor",
+        "func": "msg.topic = \"SELECT Count(*) FROM sensor where sensor_ID = '\" + msg.Sensor_ID + \"'\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 393.33335876464844,
+        "y": 450.0000305175781,
+        "wires": [
+            [
+                "93afa786553b9939"
+            ]
+        ]
+    },
+    {
+        "id": "93afa786553b9939",
+        "type": "mysql",
+        "z": "91731f4ba480b30a",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 578.8888626098633,
+        "y": 448.8889331817627,
+        "wires": [
+            [
+                "3eb3326614b84918"
+            ]
+        ]
+    },
+    {
+        "id": "f8c103b15299e04a",
+        "type": "function",
+        "z": "91731f4ba480b30a",
+        "name": "Inserir Sensor",
+        "func": "msg.payload = msg.Var_Payload;\nmsg.topic = msg.Var_Topic;\nvar zona = 4;\nmsg.topic = \"INSERT into sensor(Sensor_ID, Zona,Ativo,IP_Sensor) VALUES ('\"+msg.payload.Sensor_ID+\"',\"+ zona +\",'S','\"+ msg.payload.ESP_IP +\"')\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 981.1111602783203,
+        "y": 453.33334732055664,
+        "wires": [
+            [
+                "64235268e5acf996"
+            ]
+        ]
+    },
+    {
+        "id": "64235268e5acf996",
+        "type": "mysql",
+        "z": "91731f4ba480b30a",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 1159.9999618530273,
+        "y": 454.44446563720703,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "11c8d6e2cfb23be2",
+        "type": "mqtt out",
+        "z": "91731f4ba480b30a",
+        "name": "Sensor 1",
+        "topic": "TFC/Esplanada/Sensor1/S1",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 360,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "92e28d437c8425bd",
+        "type": "ui_switch",
+        "z": "91731f4ba480b30a",
+        "name": "Ativo",
+        "label": "Ligado?",
+        "tooltip": "",
+        "group": "64574ae0ae410483",
+        "order": 10,
+        "width": 8,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "Blue",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "Green",
+        "animate": true,
+        "className": "",
+        "x": 170,
+        "y": 740,
+        "wires": [
+            [
+                "11c8d6e2cfb23be2"
+            ]
+        ]
+    },
+    {
+        "id": "967fdb5098cee53d",
+        "type": "mqtt out",
+        "z": "91731f4ba480b30a",
+        "name": "Sensor 3",
+        "topic": "TFC/Esplanada/Sensor3/S3",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 360,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "5db489e202ec1d51",
+        "type": "ui_switch",
+        "z": "91731f4ba480b30a",
+        "name": "Ativo",
+        "label": "Ligado?",
+        "tooltip": "",
+        "group": "0ad7ea62b52c2f50",
+        "order": 10,
+        "width": 7,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "Blue",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "Green",
+        "animate": true,
+        "className": "",
+        "x": 170,
+        "y": 860,
+        "wires": [
+            [
+                "967fdb5098cee53d"
+            ]
+        ]
+    },
+    {
+        "id": "a6754513e29925fc",
+        "type": "e-mail",
+        "z": "91731f4ba480b30a",
+        "server": "mail.northspot.pt",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "arimar.sensores@gmail.com",
+        "dname": "Email",
+        "x": 550,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "6febb64ce8d9e8f8",
+        "type": "switch",
+        "z": "91731f4ba480b30a",
+        "name": "Valores_Temperatura",
+        "property": "Temperatura",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "20.50",
+                "vt": "str"
+            },
+            {
+                "t": "lte",
+                "v": "10",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 220,
+        "y": 540,
+        "wires": [
+            [
+                "0e72c18d303fd7fb"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3747d40d2a2a63c0",
+        "type": "catch",
+        "z": "91731f4ba480b30a",
+        "name": "",
+        "scope": [
+            "a6754513e29925fc"
+        ],
+        "uncaught": false,
+        "x": 170,
+        "y": 660,
+        "wires": [
+            [
+                "730536a24a8dac7e"
+            ]
+        ]
+    },
+    {
+        "id": "730536a24a8dac7e",
+        "type": "debug",
+        "z": "91731f4ba480b30a",
+        "name": "debug 33",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "110828b43e87a0f4",
+        "type": "mqtt in",
+        "z": "91731f4ba480b30a",
+        "name": "Sensor 4",
+        "topic": "TFC/Esplanada/Sensor4",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 380,
+        "wires": [
+            [
+                "f5d6e6f3c52513a6",
+                "65f85ecf205c615b"
+            ]
+        ]
+    },
+    {
+        "id": "3e783f2148bc2654",
+        "type": "ui_gauge",
+        "z": "91731f4ba480b30a",
+        "name": "Esp_Sensor4",
+        "group": "027aafb04853fa75",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "607f7c39f693ea14",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "027aafb04853fa75",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Sensor 4",
+        "label": "Nome: ",
+        "format": "{{msg.Sensor_Nome}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1460,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "2e606723a281e6a4",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "027aafb04853fa75",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1490,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "1a7bb8339f54b953",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "027aafb04853fa75",
+        "order": 8,
+        "width": 4,
+        "height": 1,
+        "name": "Data_Sensor_4",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1160,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "243ef01484c4408e",
+        "type": "ui_chart",
+        "z": "91731f4ba480b30a",
+        "name": "Leitura Sensor 4",
+        "group": "027aafb04853fa75",
+        "order": 4,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1140,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "15353dc9988f5715",
+        "type": "mqtt out",
+        "z": "91731f4ba480b30a",
+        "name": "Sensor 4",
+        "topic": "TFC/Esplanada/Sensor4/S4",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 360,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "056d9b73ace9aa15",
+        "type": "ui_switch",
+        "z": "91731f4ba480b30a",
+        "name": "Ativo",
+        "label": "Ligado?",
+        "tooltip": "",
+        "group": "027aafb04853fa75",
+        "order": 10,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "Blue",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "Green",
+        "animate": true,
+        "className": "",
+        "x": 170,
+        "y": 920,
+        "wires": [
+            [
+                "15353dc9988f5715"
+            ]
+        ]
+    },
+    {
+        "id": "b91d17c87df9909b",
+        "type": "ui_gauge",
+        "z": "91731f4ba480b30a",
+        "name": "BAT_Sensor1",
+        "group": "155ed888acecbf5d",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "c4094ca23a20a3bf",
+        "type": "ui_gauge",
+        "z": "91731f4ba480b30a",
+        "name": "BAT_Sensor2",
+        "group": "64574ae0ae410483",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "04c1b1316304f21d",
+        "type": "ui_gauge",
+        "z": "91731f4ba480b30a",
+        "name": "BAT_Sensor3",
+        "group": "0ad7ea62b52c2f50",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "520f4b2c665a1d57",
+        "type": "ui_gauge",
+        "z": "91731f4ba480b30a",
+        "name": "BAT_Sensor4",
+        "group": "027aafb04853fa75",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "0e72c18d303fd7fb",
+        "type": "function",
+        "z": "91731f4ba480b30a",
+        "name": "Temperatura ",
+        "func": "return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5c174c635254b501",
+        "type": "switch",
+        "z": "91731f4ba480b30a",
+        "name": "Valores_Bateria",
+        "property": "Bateria",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "30",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 200,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5785e9f3c21f7fdd",
+        "type": "mqtt in",
+        "z": "91731f4ba480b30a",
+        "name": "Sensor 5",
+        "topic": "TFC/Esplanada/Sensor5",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 440,
+        "wires": [
+            [
+                "f5d6e6f3c52513a6",
+                "65f85ecf205c615b"
+            ]
+        ]
+    },
+    {
+        "id": "04fbc3efbd112df6",
+        "type": "mqtt out",
+        "z": "91731f4ba480b30a",
+        "name": "Sensor 5",
+        "topic": "TFC/Esplanada/Sensor5/S5",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 360,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "ba4fc3f5895f1102",
+        "type": "ui_switch",
+        "z": "91731f4ba480b30a",
+        "name": "Ativo",
+        "label": "Ligado?",
+        "tooltip": "",
+        "group": "72c10720b3a93ebf",
+        "order": 10,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "Blue",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "Green",
+        "animate": true,
+        "className": "",
+        "x": 170,
+        "y": 980,
+        "wires": [
+            [
+                "04fbc3efbd112df6"
+            ]
+        ]
+    },
+    {
+        "id": "e79733552cbb3d59",
+        "type": "ui_gauge",
+        "z": "91731f4ba480b30a",
+        "name": "Esp_Sensor5",
+        "group": "72c10720b3a93ebf",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "04333cd4ab48998c",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "72c10720b3a93ebf",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Sensor 5",
+        "label": "Nome: ",
+        "format": "{{msg.Sensor_Nome}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 1460,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "afc02b5843165f5d",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "72c10720b3a93ebf",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1490,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "7c4e1518ac0f6fe7",
+        "type": "ui_text",
+        "z": "91731f4ba480b30a",
+        "group": "72c10720b3a93ebf",
+        "order": 8,
+        "width": 4,
+        "height": 1,
+        "name": "Data_Sensor_5",
+        "label": "Última Leitura",
+        "format": "{{msg.Data}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1160,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "7292edaf1c27c215",
+        "type": "ui_chart",
+        "z": "91731f4ba480b30a",
+        "name": "Leitura Sensor 5",
+        "group": "72c10720b3a93ebf",
+        "order": 4,
+        "width": 7,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1140,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d08a2f896a94476",
+        "type": "ui_gauge",
+        "z": "91731f4ba480b30a",
+        "name": "BAT_Sensor5",
+        "group": "72c10720b3a93ebf",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Bateria",
+        "label": "%",
+        "format": "{{msg.Bateria}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#0dc50d"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "833fd774e91b90de",
+        "type": "mqtt in",
+        "z": "4f0d36b27ba46340",
+        "name": "Sensor 1",
+        "topic": "TFC/Armazem/Sensor1",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 380,
+        "wires": [
+            [
+                "07c3101438af6fe5",
+                "10bf2dec0546c676",
+                "db4ea90d2a168dda"
+            ]
+        ]
+    },
+    {
+        "id": "10a6fdc1bebe75d4",
+        "type": "ui_gauge",
+        "z": "4f0d36b27ba46340",
+        "name": "Graf_Sensor1",
+        "group": "f43d992ed8084385",
+        "order": 1,
+        "width": 5,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 840,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "970440277eb06505",
+        "type": "ui_level",
+        "z": "4f0d36b27ba46340",
+        "group": "f43d992ed8084385",
+        "order": 2,
+        "width": 3,
+        "height": 3,
+        "name": "Nivel Bateria",
+        "label": "Bateria",
+        "colorHi": "#00ff7b",
+        "colorWarn": "#c17e1a",
+        "colorNormal": "#a4540a",
+        "colorOff": "#000000",
+        "min": "0",
+        "max": "100",
+        "segWarn": "25",
+        "segHigh": "75",
+        "unit": "%",
+        "layout": "sv",
+        "channelA": "",
+        "channelB": "",
+        "decimals": "2",
+        "animations": "reactive",
+        "shape": "3",
+        "colorschema": "rainbow",
+        "textoptions": "custom",
+        "colorText": "#eeeeee",
+        "fontLabel": "1",
+        "fontValue": "1",
+        "fontSmall": "0.5",
+        "colorFromTheme": true,
+        "textAnimations": true,
+        "hideValue": false,
+        "tickmode": "auto",
+        "peakmode": false,
+        "property": "Bateria",
+        "peaktime": 3000,
+        "x": 850,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c1f6aed3838feea5",
+        "type": "mqtt in",
+        "z": "4f0d36b27ba46340",
+        "name": "Sensor 3",
+        "topic": "TFC/Armazem/Sensor3",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 540,
+        "wires": [
+            [
+                "10bf2dec0546c676",
+                "db4ea90d2a168dda",
+                "07c3101438af6fe5"
+            ]
+        ]
+    },
+    {
+        "id": "ee9072ad948e428d",
+        "type": "mqtt in",
+        "z": "4f0d36b27ba46340",
+        "name": "Sensor 2",
+        "topic": "TFC/Armazem/Sensor2",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a22cb5334c925d0b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 460,
+        "wires": [
+            [
+                "10bf2dec0546c676",
+                "db4ea90d2a168dda",
+                "07c3101438af6fe5"
+            ]
+        ]
+    },
+    {
+        "id": "07c3101438af6fe5",
+        "type": "function",
+        "z": "4f0d36b27ba46340",
+        "name": "Max e Min",
+        "func": "var words = msg.topic.split(\"/\");\nmsg.Zona = words[1];\nmsg.Sensor = words[2].slice(-1);\nmsg.Tipo = msg.payload.Tipo;\nmsg.Sensor_ID = msg.payload.Sensor_ID;\nmsg.Temperatura = msg.payload.Temperatura;\nmsg.Bateria = msg.payload.Bateria;\nmsg.Volts = msg.payload.Bateria;\nmsg.topic = \"SELECT maximo,minimo,nome_equipamento FROM equipamento where idtipo = '\" + msg.Tipo + \"'\";\n/*\nif(msg.Sensor == 1){\n    //var msg1 = msg;\n    return [msg,null,null];\n}\nif (msg.Sensor == 2) {\n    //var msg2 = msg;\n    return [null, msg, null];\n}\nif (msg.Sensor == 3) {\n    //var msg3 = msg;\n    return [null, null, msg];\n}*/\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 420,
+        "wires": [
+            [
+                "5c721fc0e7303b92"
+            ]
+        ]
+    },
+    {
+        "id": "5c721fc0e7303b92",
+        "type": "mysql",
+        "z": "4f0d36b27ba46340",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 540,
+        "y": 420,
+        "wires": [
+            [
+                "bbe33e7d8c608bdd"
+            ]
+        ]
+    },
+    {
+        "id": "bbe33e7d8c608bdd",
+        "type": "function",
+        "z": "4f0d36b27ba46340",
+        "name": "Gráficos",
+        "func": "// Bateria\nvar recebido = msg.Bateria;\n//var porcento = 100 * (recebido - 1.1) / (4.2 - 1.1);\nvar porcento = ((recebido - 3.2) * 100) / 1;\nif (porcento > 100)\n    msg.Bateria = 100;\nelse\n    msg.Bateria = porcento;\n\nmsg.Bateria = msg.Bateria.toFixed(2);\n\nif (msg.Sensor == 1) {\n    msg.ui_control = {\n        \"id\": \"Graf_Sensor1\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    \n    return [msg, null, null];;\n}\nif (msg.Sensor == 2) {\n    msg.ui_control = {\n        \"id\": \"Graf_Sensor2\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, msg, null];\n}\nif (msg.Sensor == 3) {\n    msg.ui_control = {\n        \"id\": \"Graf_Sensor3\",\n        \"gtype\": \"gage\",\n        \"options\": {\n            \"min\": msg.payload[0].minimo,\n            \"max\": msg.payload[0].maximo,\n            \"colors\": [[202, 56, 56], [13, 197, 13], [202, 56, 56]]\n        }\n    }\n    return [null, null, msg];\n}",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 420,
+        "wires": [
+            [
+                "10a6fdc1bebe75d4",
+                "970440277eb06505",
+                "289b4a73743d78f3",
+                "6fc12b3e73769d4a"
+            ],
+            [
+                "2a915eed19f530b5",
+                "ddf1955af90369d5",
+                "265b1de922a617e6",
+                "6e8617498d9d37fb"
+            ],
+            [
+                "ec85fd06d865ec07",
+                "9b18d188f148f3c5",
+                "4113616b8e67a020",
+                "86bd1a1508f1851d"
+            ]
+        ]
+    },
+    {
+        "id": "7798eaa7cf482c7d",
+        "type": "mysql",
+        "z": "4f0d36b27ba46340",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BDados",
+        "x": 540,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db4ea90d2a168dda",
+        "type": "function",
+        "z": "4f0d36b27ba46340",
+        "name": "Inserir Data",
+        "func": "var zona = 0;\nvar words = msg.topic.split(\"/\");\nvar date = new Date().toISOString();\ndate = date.replace(\"T\",\" \");\ndate = date.slice(0, date.length - 5 );\nif (words[1] == \"Esplanada\"){    zona = 4;} \nelse if (words[1] == \"Cozinha\"){    zona = 1;} \nelse if (words[1] = \"Sala\"){    zona = 2;}\nelse{ zona=3;}\n\nmsg.topic = \"INSERT INTO registos (zona, sensor, temperatura, bateria, data) \"+\n    \" VALUES ('\" + zona + \"','\" + msg.payload.Sensor_ID + \"', '\" \n    + msg.payload.Temperatura + \"', '\"\n    + msg.payload.Bateria + \"', '\"\n    + date + \"')\";\nmsg.Zonas = words[1];\nmsg.Sensor = words[2].slice(-1);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 500,
+        "wires": [
+            [
+                "7798eaa7cf482c7d"
+            ]
+        ]
+    },
+    {
+        "id": "2a915eed19f530b5",
+        "type": "ui_gauge",
+        "z": "4f0d36b27ba46340",
+        "name": "Graf_Sensor2",
+        "group": "904b7af53bb14c68",
+        "order": 1,
+        "width": 6,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1100,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "ddf1955af90369d5",
+        "type": "ui_level",
+        "z": "4f0d36b27ba46340",
+        "group": "904b7af53bb14c68",
+        "order": 2,
+        "width": 3,
+        "height": 3,
+        "name": "Nivel Bateria",
+        "label": "Bateria",
+        "colorHi": "#00ff7b",
+        "colorWarn": "#c17e1a",
+        "colorNormal": "#a4540a",
+        "colorOff": "#000000",
+        "min": "0",
+        "max": "100",
+        "segWarn": "25",
+        "segHigh": "75",
+        "unit": "%",
+        "layout": "sv",
+        "channelA": "",
+        "channelB": "",
+        "decimals": "2",
+        "animations": "reactive",
+        "shape": "3",
+        "colorschema": "rainbow",
+        "textoptions": "custom",
+        "colorText": "#eeeeee",
+        "fontLabel": "1",
+        "fontValue": "1",
+        "fontSmall": "0.5",
+        "colorFromTheme": true,
+        "textAnimations": true,
+        "hideValue": false,
+        "tickmode": "auto",
+        "peakmode": false,
+        "property": "Bateria",
+        "peaktime": 3000,
+        "x": 1090,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "ec85fd06d865ec07",
+        "type": "ui_gauge",
+        "z": "4f0d36b27ba46340",
+        "name": "Graf_Sensor3",
+        "group": "3210ac3b6423b62c",
+        "order": 1,
+        "width": 5,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "Cº",
+        "format": "{{msg.Temperatura}}",
+        "min": "10",
+        "max": "30",
+        "colors": [
+            "#ca3838",
+            "#0dc50d",
+            "#ca3838"
+        ],
+        "seg1": "15",
+        "seg2": "25",
+        "diff": false,
+        "className": "",
+        "x": 1000,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "9b18d188f148f3c5",
+        "type": "ui_level",
+        "z": "4f0d36b27ba46340",
+        "group": "3210ac3b6423b62c",
+        "order": 2,
+        "width": 3,
+        "height": 3,
+        "name": "Nivel Bateria",
+        "label": "Bateria",
+        "colorHi": "#00ff7b",
+        "colorWarn": "#c17e1a",
+        "colorNormal": "#a4540a",
+        "colorOff": "#000000",
+        "min": "0",
+        "max": "100",
+        "segWarn": "25",
+        "segHigh": "75",
+        "unit": "%",
+        "layout": "sv",
+        "channelA": "",
+        "channelB": "",
+        "decimals": "2",
+        "animations": "reactive",
+        "shape": "3",
+        "colorschema": "rainbow",
+        "textoptions": "custom",
+        "colorText": "#eeeeee",
+        "fontLabel": "1",
+        "fontValue": "1",
+        "fontSmall": "0.5",
+        "colorFromTheme": true,
+        "textAnimations": true,
+        "hideValue": false,
+        "tickmode": "auto",
+        "peakmode": false,
+        "property": "Bateria",
+        "peaktime": 3000,
+        "x": 990,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "10bf2dec0546c676",
+        "type": "debug",
+        "z": "4f0d36b27ba46340",
+        "name": "debug 26",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "289b4a73743d78f3",
+        "type": "ui_text",
+        "z": "4f0d36b27ba46340",
+        "group": "f43d992ed8084385",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Nome",
+        "label": "ID Sensor: ",
+        "format": "{{msg.Sensor_ID}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1070,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "4113616b8e67a020",
+        "type": "ui_text",
+        "z": "4f0d36b27ba46340",
+        "group": "3210ac3b6423b62c",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Nome",
+        "label": "ID Sensor: ",
+        "format": "{{msg.Sensor_ID}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 970,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "6fc12b3e73769d4a",
+        "type": "ui_text",
+        "z": "4f0d36b27ba46340",
+        "group": "f43d992ed8084385",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1110,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "265b1de922a617e6",
+        "type": "ui_text",
+        "z": "4f0d36b27ba46340",
+        "group": "904b7af53bb14c68",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "name": "Nome",
+        "label": "ID Sensor: ",
+        "format": "{{msg.Sensor_ID}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1070,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "86bd1a1508f1851d",
+        "type": "ui_text",
+        "z": "4f0d36b27ba46340",
+        "group": "3210ac3b6423b62c",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1010,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "6e8617498d9d37fb",
+        "type": "ui_text",
+        "z": "4f0d36b27ba46340",
+        "group": "904b7af53bb14c68",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Bateria em Volts:",
+        "format": "{{msg.Volts}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1110,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "71526b24d8715345",
+        "type": "mqtt out",
+        "z": "4f0d36b27ba46340",
+        "name": "Sensor 2",
+        "topic": "TFC/Armazem/Sensor2/S2",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a22cb5334c925d0b",
+        "x": 1040,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "5f83c83778f45117",
+        "type": "ui_switch",
+        "z": "4f0d36b27ba46340",
+        "name": "Ativo",
+        "label": "Ativado?",
+        "tooltip": "Click ",
+        "group": "f43d992ed8084385",
+        "order": 4,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "check",
+        "oncolor": "green",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "close",
+        "offcolor": "red",
+        "animate": true,
+        "className": "",
+        "x": 830,
+        "y": 940,
+        "wires": [
+            [
+                "71526b24d8715345"
+            ]
+        ]
+    },
+    {
+        "id": "e343f6f6.b5eae8",
+        "type": "inject",
+        "z": "775213c7befc82bb",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{   \"content\": [     \"welcome to node red tutorial\",     \"Like share and subscribe\"   ] }",
+        "payloadType": "json",
+        "x": 430,
+        "y": 260,
+        "wires": [
+            [
+                "1d913918.df3547"
+            ]
+        ]
+    },
+    {
+        "id": "cdfd5666.91d048",
+        "type": "file",
+        "z": "775213c7befc82bb",
+        "name": "",
+        "filename": "C:\\data\\test.pdf",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 700,
+        "y": 260,
+        "wires": [
+            [
+                "eb436587.f8cac8"
+            ]
+        ]
+    },
+    {
+        "id": "fa4653a9.f7825",
+        "type": "comment",
+        "z": "775213c7befc82bb",
+        "name": "Simple Example PDF",
+        "info": "This is the simplest PDF test as seen in the pdfmake examples [here](http://pdfmake.org/playground.html)",
+        "x": 640,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "eb436587.f8cac8",
+        "type": "debug",
+        "z": "775213c7befc82bb",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "1d913918.df3547",
+        "type": "pdfmake",
+        "z": "775213c7befc82bb",
+        "name": "pdf generater",
+        "outputType": "Buffer",
+        "inputProperty": "payload",
+        "options": "{}",
+        "outputProperty": "payload",
+        "x": 510,
+        "y": 380,
+        "wires": [
+            [
+                "cdfd5666.91d048"
+            ]
+        ]
+    },
+    {
+        "id": "950722a7be9a16c6",
+        "type": "ui_table",
+        "z": "36c8992b04a40e1e",
+        "group": "2da9c0ea5c1db297",
+        "name": "Sensores",
+        "order": 1,
+        "width": "28",
+        "height": "10",
+        "columns": [
+            {
+                "field": "zona",
+                "title": "Zona",
+                "width": "10%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "sensor",
+                "title": "Sensor ID",
+                "width": "15%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "temperatura",
+                "title": "Temperatura",
+                "width": "10%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "bateria",
+                "title": "Bateria",
+                "width": "10%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "data",
+                "title": "Última Registo",
+                "width": "20%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "",
+                "title": "Ligado",
+                "width": "10%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "",
+                "title": "Endereço IP",
+                "width": "15%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 1,
+        "cts": true,
+        "x": 840,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "446bbc916dd54db0",
+        "type": "function",
+        "z": "36c8992b04a40e1e",
+        "name": "function 4",
+        "func": "msg.topic = \"SELECT * FROM registos ORDER BY id desc LIMIT 20;\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "a4ac6c3b6cb8ce05"
+            ]
+        ]
+    },
+    {
+        "id": "a4ac6c3b6cb8ce05",
+        "type": "mysql",
+        "z": "36c8992b04a40e1e",
+        "mydb": "9b6527f7.cad8b8",
+        "name": "BD ",
+        "x": 610,
+        "y": 220,
+        "wires": [
+            [
+                "950722a7be9a16c6",
+                "7798fe51b05bd459"
+            ]
+        ]
+    },
+    {
+        "id": "7798fe51b05bd459",
+        "type": "debug",
+        "z": "36c8992b04a40e1e",
+        "name": "debug 27",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "703f508eafe41497",
+        "type": "inject",
+        "z": "36c8992b04a40e1e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "446bbc916dd54db0"
+            ]
+        ]
+    }
+]
