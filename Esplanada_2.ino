@@ -142,7 +142,6 @@ float lerBateria() {
   int rounds = 11;
   esp_adc_cal_characteristics_t adc_chars;
 
-  //battery voltage divided by 2 can be measured at GPIO34, which equals ADC1_CHANNEL6
   adc1_config_width(ADC_WIDTH_BIT_12);
   adc1_config_channel_atten(ADC1_CHANNEL_6, ADC_ATTEN_DB_11);
   esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_11, ADC_WIDTH_BIT_12, 2000, &adc_chars);
