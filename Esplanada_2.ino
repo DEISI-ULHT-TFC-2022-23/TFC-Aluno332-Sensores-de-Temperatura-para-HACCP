@@ -35,7 +35,7 @@ DynamicJsonDocument doc(256);
 JsonObject obj = doc.to<JsonObject>();
 char buffer[256];
 
-#define OTA_Versao 1
+#define OTA_Versao 2
 esp32FOTA esp32FOTA("esp32-fota-http", OTA_Versao, false, true);
 const char* manifest_url = "https://www.sensores.northspot.pt/Esplanada/Sensor_2/Esplanada_2.json";
 
@@ -53,20 +53,23 @@ void conetar_mqtt() {
       obj["Bateria"] = lerBateria();
       obj["WIFI"] = WiFi.RSSI();
       // Espera de 2 Horas
-      if(obj["Bateria"] <= POUCA_Bateria && obj["Bateria"] >= MUITO_POUCA_Bateria){    TIME_TO_SLEEP = 7200;    
+      if (obj["Bateria"] <= POUCA_Bateria && obj["Bateria"] >= MUITO_POUCA_Bateria){    
+        TIME_TO_SLEEP = 7200;    
       }
       // Espera de 3 Horas
-      if(obj["Bateria"] <= MUITO_POUCA_Bateria && obj["Bateria"] >= CRITICO_Bateria){  TIME_TO_SLEEP = 10800;    
+      if (obj["Bateria"] <= MUITO_POUCA_Bateria && obj["Bateria"] >= CRITICO_Bateria){  
+        TIME_TO_SLEEP = 10800;    
       }
       // Espera de 4 Horas 
-      if(obj["Bateria"] <= CRITICO_Bateria){    TIME_TO_SLEEP = 14400; 
+      if (obj["Bateria"] <= CRITICO_Bateria){    
+        TIME_TO_SLEEP = 14400; 
       }
 
-      obj["Tipo"] = 2;
+      obj["Tipo"] = 1;
       obj["Ativo"] = Ativo;
       obj["ESP_IP"] = WiFi.localIP().toString();
       obj["VERSAO"] = OTA_Versao;
-      obj["Nome"] = "Esplanada - Arca dos Gelados";
+      obj["Nome"] = "Balcão Frente - Vinhos";
       
       size_t n = serializeJson(doc, buffer);
       Serial.print("PUB: ");  Serial.println(buffer);
@@ -142,6 +145,7 @@ float lerBateria() {
   int rounds = 11;
   esp_adc_cal_characteristics_t adc_chars;
 
+  //battery voltage divided by 2 can be measured at GPIO34, which equals ADC1_CHANNEL6
   adc1_config_width(ADC_WIDTH_BIT_12);
   adc1_config_channel_atten(ADC1_CHANNEL_6, ADC_ATTEN_DB_11);
   esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_11, ADC_WIDTH_BIT_12, 2000, &adc_chars);

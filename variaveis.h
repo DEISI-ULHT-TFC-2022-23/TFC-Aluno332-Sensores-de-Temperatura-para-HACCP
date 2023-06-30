@@ -5,9 +5,9 @@
 #define CRITICO_Bateria 3.35
 
 uint64_t uS_TO_S_FACTOR = 1000000;  
-uint64_t TIME_TO_SLEEP = 60;      
-uint64_t SLEEP_MQTT = 60;  
-uint64_t SLEEP_WIFI = 60;     
+uint64_t TIME_TO_SLEEP = 600;      
+uint64_t SLEEP_MQTT = 600;  
+uint64_t SLEEP_WIFI = 600;     
 // WIFI
 // ---------------------------------------------------------------------------
 const char* ssid = "Cave da Gente";
